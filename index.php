@@ -10,13 +10,13 @@ include('inc/header.php');
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-40" src="images/13286.jpg" alt="First slide">
+      <img class="d-block w-40" src="posters/13286.jpg" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-40" src="images/13288.jpg" alt="Second slide">
+      <img class="d-block w-40" src="posters/13288.jpg" alt="Second slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-40" src="images/13296.jpg" alt="Third slide">
+      <img class="d-block w-40" src="posters/13296.jpg" alt="Third slide">
     </div>
   </div>
 </div>
@@ -25,35 +25,35 @@ include('inc/header.php');
  <div class="container-fluide">
 </div>
    <!-- Content here -->
-  <img src="images/4238.jpg">
-  <img src="images/4239.jpg">
-  <img src="images/4240.jpg">
-  <img src="images/4350.jpg">
-  <img src="images/4452.jpg">
-  <img src="images/4243.jpg">
-  <img src="images/4244.jpg">
-  <img src="images/4245.jpg">
-  <img src="images/13270.jpg">
-  <img src="images/4247.jpg">
-  <img src="images/4248.jpg">
-  <img src="images/4249.jpg">
-  <img src="images/4250.jpg">
-  <img src="images/4251.jpg">
-  <img src="images/4252.jpg">
-  <img src="images/4254.jpg">
-  <img src="images/4255.jpg">
-  <img src="images/4256.jpg">
-  <img src="images/4257.jpg">
-  <img src="images/4258.jpg">
-  <img src="images/13286.jpg">
-  <img src="images/4260.jpg">
-  <img src="images/4261.jpg">
-  <img src="images/4262.jpg">
-  <img src="images/4263.jpg">
-  <img src="images/4264.jpg">
-  <img src="images/13274.jpg">
-  <img src="images/4267.jpg">
-  <img src="images/4268.jpg">
+  <img src="posters/4238.jpg">
+  <img src="posters/4239.jpg">
+  <img src="posters/4240.jpg">
+  <img src="posters/4350.jpg">
+  <img src="posters/4452.jpg">
+  <img src="posters/4243.jpg">
+  <img src="posters/4244.jpg">
+  <img src="posters/4245.jpg">
+  <img src="posters/13270.jpg">
+  <img src="posters/4247.jpg">
+  <img src="posters/4248.jpg">
+  <img src="posters/4249.jpg">
+  <img src="posters/4250.jpg">
+  <img src="posters/4251.jpg">
+  <img src="posters/4252.jpg">
+  <img src="posters/4254.jpg">
+  <img src="posters/4255.jpg">
+  <img src="posters/4256.jpg">
+  <img src="posters/4257.jpg">
+  <img src="posters/4258.jpg">
+  <img src="posters/13286.jpg">
+  <img src="posters/4260.jpg">
+  <img src="posters/4261.jpg">
+  <img src="posters/4262.jpg">
+  <img src="posters/4263.jpg">
+  <img src="posters/4264.jpg">
+  <img src="posters/13274.jpg">
+  <img src="posters/4267.jpg">
+  <img src="posters/4268.jpg">
 </div>
   <div class="container">
   
