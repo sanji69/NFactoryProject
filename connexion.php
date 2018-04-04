@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('inc/pdo.php');
 include('inc/function.php');
 
@@ -16,7 +17,7 @@ if(!empty($_POST['send']))
     $cryptopass = password_hash($password, PASSWORD_DEFAULT);
     $sql = "SELECT * FROM `users` WHERE pseudo= :pseudo";
     $query = $pdo->prepare($sql);
-    $query->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
+    $query->bindValue(':pseudo', $login, PDO::PARAM_STR);
     $query-> execute();
     $user = $query->fetch();
     if(!empty($user))
@@ -27,9 +28,11 @@ if(!empty($_POST['send']))
       elseif($connectionstatus == false)
         $error['password'] = 'mot de passe incorrect';
     }
-    $error['pseudo'] = 'identifiant incorrect';
+    else
+      $error['pseudo'] = 'identifiant incorrect';
   }
-  $error['pseudo'] = 'identifiant incorrect';
+  else
+    $error['pseudo'] = 'identifiant incorrect';
   if(count($error) == 0)
     $connexion = true;
   if($connexion == true)
@@ -37,8 +40,8 @@ if(!empty($_POST['send']))
 
     $user_ip = getUserIP();
     $_SESSION['user'] = array(
-      'login' = $login,
-      'user_ip' = $user_ip
+      'login' => $login,
+      'user_ip' => $user_ip
     );
     header('location: index.php');
   }
@@ -57,11 +60,11 @@ if(!empty($_POST['send']))
 
   <label>Pseudo</label>
   <input type="text" name="pseudo" value="">
-  <span></span>
+  <span><?php if(!empty($error['psedo'])) echo $error['pseudo']; ?></span>
 
   <label>Password</label>
   <input type="text" name="password" value="">
-  <span></span>
+  <span><?php if(!empty($error['psedo'])) echo $error['password']; ?></span>
 
   <input type="submit" name="send" value="Connexion">
 
