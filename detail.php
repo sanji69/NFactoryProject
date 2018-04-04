@@ -3,11 +3,12 @@ session_start();
 include('inc/pdo.php');
 include('inc/function.php');
 
-if(!empty($_GET['id']) && is_numeric($_GET['id']))
+if(!empty($_GET['slug']))
 {
-  $sql= "SELECT * FROM movies_full WHERE id= :id";
+  $slug = trim(strip_tags($_GET['slug']));
+  $sql= "SELECT * FROM movies_full WHERE slug= :slug";
   $query= $pdo->prepare($sql);
-  $query->bindValue(':id', $_GET['id'],PDO::PARAM_INT);
+  $query->bindValue(':slug', $slug,PDO::PARAM_STR);
   $query->execute();
   $movie=$query->fetch();
   if (empty($movie))
