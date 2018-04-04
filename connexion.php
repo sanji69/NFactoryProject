@@ -77,6 +77,9 @@ if(!empty($_POST['send']))
 
   <input type="submit" name="send" value="Connexion">
 
+
+  <a href="forgotpassword.php">Mot de passe oublié</a>
+
 </form>
 
 
