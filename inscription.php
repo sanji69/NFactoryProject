@@ -20,9 +20,13 @@ if(!empty($_POST['send']))
   $query-> execute();
   $user_login = $query->fetch();
   if(!empty($user_login))
+  {
     $error['pseudo'] = 'nom de compte deja existant';
+  }
   else
+  {
     $error['pseudo'] = is_login_ok($pseudo);
+  }
 
   $sql = "SELECT email FROM `users` WHERE pseudo= :mail";
   $query = $pdo->prepare($sql);
@@ -30,9 +34,13 @@ if(!empty($_POST['send']))
   $query-> execute();
   $user_mail = $query->fetch();
   if(!empty($user_mail))
+  {
     $error['email'] = 'Email deja existant';
+  }
   else
+  {
     $error['email'] = is_mail_ok($email);
+  }
   $error['password'] = is_password_ok($password, $pass);
 
   if (count($error == 0))
@@ -88,4 +96,3 @@ if(!empty($_POST['send']))
 
  <?php
 include('inc/footer.php');
-  ?>

@@ -24,20 +24,29 @@ if(!empty($_POST['send']))
     {
       $connectionstatus = password_verify($password, $user['password']);
       if($user['pseudo'] != $login)
-        $error['pseudo'] = 'identifant incorrect';
+      {
+          $error['pseudo'] = 'identifant incorrect';
+      }
       elseif($connectionstatus == false)
+      {
         $error['password'] = 'mot de passe incorrect';
+      }
     }
     else
+    {
       $error['pseudo'] = 'identifiant incorrect';
+    }
   }
   else
+  {
     $error['pseudo'] = 'identifiant incorrect';
+  }
   if(count($error) == 0)
-    $connexion = true;
+  {
+      $connexion = true;
+  }
   if($connexion == true)
   {
-
     $user_ip = getUserIP();
     $_SESSION['user'] = array(
       'login' => $login,
@@ -74,4 +83,3 @@ if(!empty($_POST['send']))
 
  <?php
 include('inc/footer.php');
-  ?>
