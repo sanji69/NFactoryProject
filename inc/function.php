@@ -98,30 +98,35 @@ function getUserIP()
     return $ip;
 }
 
-function islog($var, $pdo)
+function islog($var)
 {
-  if(!empty($var['user']['id']))
+  // echo 'function start';
+  if(!empty($var['user']['id']) && is_numeric($var['user']['id']))
   {
-    $sql = "SELECT * FROM users WHERE id= :id";
-    $query=$pdo->prepare($sql);
-    $query->bindValue(':id', $var['user']['id'], PDO::PARAM_INT);
-    $query->execute();
-    $user=$query->fetch();
-
-    if($var['user']['user_ip'] == getUserIP() && !empty($user))
+    // echo 'id ok';
+    if(!empty($var['user']['user_ip']) && $var['user']['user_ip'] == getUserIP())
     {
-      return true;
+      // echo 'ip ok';
+      if(!empty($var['user']['email']))
+      {
+        // echo 'email ok';
+        if(!empty($var['user']['login']))
+        {
+          // echo 'login ok';
+          if (!empty($var['user']['role']))
+          {
+            // echo 'role ok';
+            return true;
+          }
+        }
+      }
     }
   }
-  else
-  {
   return false;
-  }
 }
 
 function add_to_see($pdo, $user, $movie, $movies_users)
 {
-  echo 'ajouté';
   if(!empty($movies_users))
   {
     $sql = "UPDATE movies_users SET status=1 WHERE user_id= :user AND movie_id= :movie_id";
@@ -142,7 +147,6 @@ function add_to_see($pdo, $user, $movie, $movies_users)
 
 function dell_to_see($pdo, $user, $movie)
 {
-  echo 'supprimer';
   $sql = "UPDATE movies_users SET status=0 WHERE user_id= :user AND movie_id= :movie_id";
   $query=$pdo->prepare($sql);
   $query->bindValue(':user', $user['user']['id'], PDO::PARAM_INT);

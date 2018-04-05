@@ -52,7 +52,8 @@ if(!empty($_POST['send']))
       'login' => $login,
       'user_ip' => $user_ip,
       'id' => $user['id'],
-      'email' => $user['email']
+      'email' => $user['email'],
+      'role' => $user['role']
     );
     header('location: index.php');
   }
