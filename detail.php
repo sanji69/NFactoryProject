@@ -36,7 +36,7 @@ if(!empty($_GET['slug']))
       $movie_user=$query->fetch();
       if(!empty($movie_user))
       {
-        $sql = "UPDATE `movies_users` SET `note`= :note WHERE user_id= :user AND movie_id= :movie";
+        $sql = "UPDATE `movies_users` SET `note`= :note update_at=NOW() WHERE user_id= :user AND movie_id= :movie";
         $query= $pdo->prepare($sql);
         $query->bindValue(':user', $user_id,PDO::PARAM_INT);
         $query->bindValue(':movie', $movie_id,PDO::PARAM_INT);

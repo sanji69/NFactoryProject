@@ -129,7 +129,7 @@ function add_to_see($pdo, $user, $movie, $movies_users)
 {
   if(!empty($movies_users))
   {
-    $sql = "UPDATE movies_users SET status=1 WHERE user_id= :user AND movie_id= :movie_id";
+    $sql = "UPDATE movies_users SET status=1 update_at=NOW() WHERE user_id= :user AND movie_id= :movie_id";
     $query=$pdo->prepare($sql);
     $query->bindValue(':user', $user['user']['id'], PDO::PARAM_INT);
     $query->bindValue(':movie_id', $movie['id'], PDO::PARAM_INT);
@@ -147,7 +147,7 @@ function add_to_see($pdo, $user, $movie, $movies_users)
 
 function dell_to_see($pdo, $user, $movie)
 {
-  $sql = "UPDATE movies_users SET status=0 WHERE user_id= :user AND movie_id= :movie_id";
+  $sql = "UPDATE movies_users SET status=0 update_at=NOW() WHERE user_id= :user AND movie_id= :movie_id";
   $query=$pdo->prepare($sql);
   $query->bindValue(':user', $user['user']['id'], PDO::PARAM_INT);
   $query->bindValue(':movie_id', $movie['id'], PDO::PARAM_INT);

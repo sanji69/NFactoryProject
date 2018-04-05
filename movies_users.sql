@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 05 avr. 2018 à 12:51
+-- Généré le :  jeu. 05 avr. 2018 à 16:06
 -- Version du serveur :  10.1.31-MariaDB
 -- Version de PHP :  7.2.3
 
@@ -34,15 +34,16 @@ CREATE TABLE `movies_users` (
   `movie_id` int(11) NOT NULL,
   `note` int(3) NOT NULL,
   `status` int(1) NOT NULL,
-  `created_at` datetime NOT NULL
+  `created_at` datetime NOT NULL,
+  `undate_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `movies_users`
 --
 
-INSERT INTO `movies_users` (`id`, `user_id`, `movie_id`, `note`, `status`, `created_at`) VALUES
-(1, 1, 4240, 75, 1, '2018-04-05 12:50:38');
+INSERT INTO `movies_users` (`id`, `user_id`, `movie_id`, `note`, `status`, `created_at`, `undate_at`) VALUES
+(1, 1, 4240, 75, 1, '2018-04-05 12:50:38', NULL);
 
 --
 -- Index pour les tables déchargées
