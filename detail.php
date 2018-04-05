@@ -46,7 +46,7 @@ if(!empty($_GET['slug']))
       }
       else
       {
-        $sql= "INSERT INTO `movies_users`(`user_id`, `movie_id`, `note`) VALUES (:user_id, :movie_id, :note)";
+        $sql= "INSERT INTO `movies_users`(`user_id`, `movie_id`, `note`, created_at) VALUES (:user_id, :movie_id, :note, NOW())";
         $query= $pdo->prepare($sql);
         $query->bindValue(':user_id', $user_id,PDO::PARAM_INT);
         $query->bindValue(':movie_id', $movie_id,PDO::PARAM_INT);

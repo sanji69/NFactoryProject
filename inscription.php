@@ -49,7 +49,7 @@ if(!empty($_POST['send']))
   {
     $token = creatToken();
     $cryptopass = password_hash($password, PASSWORD_DEFAULT);
-    $sql = "INSERT INTO users(`pseudo`, `email`, `password`, `token`) VALUES (:pseudo, :email, :password, :token)";
+    $sql = "INSERT INTO users(`pseudo`, `email`, `password`, `token`, created_at) VALUES (:pseudo, :email, :password, :token, NOW())";
     $query = $pdo->prepare($sql);
     $query-> bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
     $query-> bindValue(':email', $email, PDO::PARAM_STR);

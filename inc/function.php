@@ -137,7 +137,7 @@ function add_to_see($pdo, $user, $movie, $movies_users)
   }
   else
   {
-    $sql = "INSERT INTO movies_users(user_id, movie_id, status) VALUES (:user,:movie_id, 1)";
+    $sql = "INSERT INTO movies_users(user_id, movie_id, status, created_at) VALUES (:user,:movie_id, 1, NOW())";
     $query=$pdo->prepare($sql);
     $query->bindValue(':user', $user['user']['id'], PDO::PARAM_INT);
     $query->bindValue(':movie_id', $movie['id'], PDO::PARAM_INT);

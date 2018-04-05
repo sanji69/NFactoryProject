@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mer. 04 avr. 2018 à 16:33
+-- Généré le :  jeu. 05 avr. 2018 à 12:51
 -- Version du serveur :  10.1.31-MariaDB
 -- Version de PHP :  7.2.3
 
@@ -33,8 +33,16 @@ CREATE TABLE `movies_users` (
   `user_id` int(11) NOT NULL,
   `movie_id` int(11) NOT NULL,
   `note` int(3) NOT NULL,
-  `status` int(1) NOT NULL DEFAULT '1'
+  `status` int(1) NOT NULL,
+  `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `movies_users`
+--
+
+INSERT INTO `movies_users` (`id`, `user_id`, `movie_id`, `note`, `status`, `created_at`) VALUES
+(1, 1, 4240, 75, 1, '2018-04-05 12:50:38');
 
 --
 -- Index pour les tables déchargées
@@ -54,7 +62,7 @@ ALTER TABLE `movies_users`
 -- AUTO_INCREMENT pour la table `movies_users`
 --
 ALTER TABLE `movies_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mar. 03 avr. 2018 à 15:40
+-- Généré le :  jeu. 05 avr. 2018 à 12:50
 -- Version du serveur :  10.1.31-MariaDB
 -- Version de PHP :  7.2.3
 
@@ -33,8 +33,17 @@ CREATE TABLE `users` (
   `pseudo` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL
+  `token` varchar(255) NOT NULL,
+  `role` enum('user','admin') NOT NULL DEFAULT 'user',
+  `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `pseudo`, `email`, `password`, `token`, `role`, `created_at`) VALUES
+(1, 'Sanji', 'axel.aubry69@gmail.com', '$2y$10$6.87rWMCwk23aTkFbygNl.cQNojOcYc1f/p0EqRcaiHaTUcvDOSuC', 'N4Yn0gXpMD3vhiq5HL81kdBm2tZP9o7UOjICbWeKJQVGacf6Fw', 'admin', '2018-04-05 12:50:02');
 
 --
 -- Index pour les tables déchargées
@@ -54,7 +63,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
