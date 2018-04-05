@@ -1,6 +1,8 @@
-<?php 
+<?php
+session_start();
 include('inc/pdo.php');
 include('inc/function.php');
+
 ?>
 
 <?php
@@ -56,7 +58,7 @@ include('inc/header.php');
   <img src="posters/4268.jpg">
 </div>
   <div class="container">
-  
+
 </img>
 </div>
 <div class="footer">
@@ -66,7 +68,6 @@ include('inc/header.php');
   <script language="JavaScript">Images_Aleatoire();</script>
 
 
-  <?php 
+  <?php
   include('inc/footer.php');
-  //je suis un connard
-  ?>
+  

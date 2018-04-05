@@ -30,9 +30,15 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
   <a class="btn btn-danger" href="index.php">Accueil</a>
-  <a class="nav-link active" href="inscription.php">Inscription</a>
-  <a class="nav-link active" href="connexion.php">Connexion</a>
-  <a class="nav-link active" href="deconnexion.php">Deconnexion</a>
+  <?php
+  if(!empty($_SESSION))
+      echo '<a class="nav-link active" href="deconnexion.php">Deconnexion</a>';
+  else
+  {
+    echo '  <a class="nav-link active" href="inscription.php">Inscription</a>
+      <a class="nav-link active" href="connexion.php">Connexion</a>';
+  }
+   ?>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

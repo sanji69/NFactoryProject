@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include('inc/pdo.php');
 include('inc/function.php');
 
@@ -18,9 +20,13 @@ if(!empty($_POST['send']))
   $query-> execute();
   $user_login = $query->fetch();
   if(!empty($user_login))
+  {
     $error['pseudo'] = 'nom de compte deja existant';
+  }
   else
+  {
     $error['pseudo'] = is_login_ok($pseudo);
+  }
 
   $sql = "SELECT email FROM `users` WHERE pseudo= :mail";
   $query = $pdo->prepare($sql);
@@ -28,9 +34,13 @@ if(!empty($_POST['send']))
   $query-> execute();
   $user_mail = $query->fetch();
   if(!empty($user_mail))
+  {
     $error['email'] = 'Email deja existant';
+  }
   else
+  {
     $error['email'] = is_mail_ok($email);
+  }
   $error['password'] = is_password_ok($password, $pass);
 
   if (count($error == 0))
@@ -39,7 +49,7 @@ if(!empty($_POST['send']))
   {
     $token = creatToken();
     $cryptopass = password_hash($password, PASSWORD_DEFAULT);
-    $sql = "INSERT INTO users(`pseudo`, `email`, `password`, `token`) VALUES (:pseudo, :email, :password, :token)";
+    $sql = "INSERT INTO users(`pseudo`, `email`, `password`, `token`, created_at) VALUES (:pseudo, :email, :password, :token, NOW())";
     $query = $pdo->prepare($sql);
     $query-> bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
     $query-> bindValue(':email', $email, PDO::PARAM_STR);
@@ -86,4 +96,3 @@ if(!empty($_POST['send']))
 
  <?php
 include('inc/footer.php');
-  ?>

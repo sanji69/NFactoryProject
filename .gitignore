@@ -1,3 +1,4 @@
-#supression des images
+#on ignore les images
 .jpg
 posters
+vendor

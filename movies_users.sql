@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 05 avr. 2018 à 12:50
+-- Généré le :  jeu. 05 avr. 2018 à 12:51
 -- Version du serveur :  10.1.31-MariaDB
 -- Version de PHP :  7.2.3
 
@@ -25,34 +25,33 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Structure de la table `movies_users`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `movies_users` (
   `id` int(11) NOT NULL,
-  `pseudo` varchar(50) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL,
-  `role` enum('user','admin') NOT NULL DEFAULT 'user',
+  `user_id` int(11) NOT NULL,
+  `movie_id` int(11) NOT NULL,
+  `note` int(3) NOT NULL,
+  `status` int(1) NOT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `users`
+-- Déchargement des données de la table `movies_users`
 --
 
-INSERT INTO `users` (`id`, `pseudo`, `email`, `password`, `token`, `role`, `created_at`) VALUES
-(1, 'Sanji', 'axel.aubry69@gmail.com', '$2y$10$6.87rWMCwk23aTkFbygNl.cQNojOcYc1f/p0EqRcaiHaTUcvDOSuC', 'N4Yn0gXpMD3vhiq5HL81kdBm2tZP9o7UOjICbWeKJQVGacf6Fw', 'admin', '2018-04-05 12:50:02');
+INSERT INTO `movies_users` (`id`, `user_id`, `movie_id`, `note`, `status`, `created_at`) VALUES
+(1, 1, 4240, 75, 1, '2018-04-05 12:50:38');
 
 --
 -- Index pour les tables déchargées
 --
 
 --
--- Index pour la table `users`
+-- Index pour la table `movies_users`
 --
-ALTER TABLE `users`
+ALTER TABLE `movies_users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -60,10 +59,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT pour la table `users`
+-- AUTO_INCREMENT pour la table `movies_users`
 --
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `movies_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
