@@ -60,26 +60,31 @@ else
 
      ?>
   </ul>
+</div>
+
+<div class="note">
 
 <?php
-  if(!empty($_SESSION['id']))
+  if(islog($_SESSION, $pdo) == true)
   {
-    $sql = "SELECT * FROM movies_users WHERE user_id= : user_id AND movie_id= :movie_id";
+    $sql = "SELECT * FROM movies_users WHERE user_id= :user_id AND movie_id= :movie_id";
     $query=$pdo->prepare($sql);
-    $query->bindValue(':user_id', $_SESSION['id'], PDO::PARAM_INT);
+    $query->bindValue(':user_id', $_SESSION['user']['id'], PDO::PARAM_INT);
     $query->bindValue(':movie_id', $movie['id'], PDO::PARAM_INT);
     $query->execute();
     $movies_users=$query->fetch();
 
-    if(!empty($movies_users) && $movies_users['status'] == 1)
+    // echo 'connection BDD movies_users succes';
+
+    if(!empty($movies_users) || $movies_users['status'] == 1)
     {
-      echo '<input type="submit" name="dell" value="Retirer de a voir plus tard" method="dell_to_see()">';
+      echo '<input type="submit" name="dell" value="Retirer de a voir plus tard" onclick="dell_to_see($pdo, $_SESSION, $movie, $movies_users)">';
     }
     else
     {
-      echo '<input type="submit" name="add" value="Ajouter a voir plus tard" method="add_to_see()">';
+      echo '<input type="submit" name="add" value="Ajouter a voir plus tard" onclick="add_to_see($pdo, $_SESSION, $movie)">';
     }
-    if(!empty($movies_users['note']))
+    if(empty($movies_users['note']))
     {
       echo '<form action="detail.php?slug=' . $_GET['slug']. '" method="post">
         <label>Note</label>
@@ -89,8 +94,8 @@ else
     }
   }
  ?>
-</div>
 
+</div>
 
 
 

@@ -1,4 +1,5 @@
 <?php
+include('pdo.php');
 
 function is_login_ok($login)
 {
@@ -95,4 +96,56 @@ function getUserIP()
     }
 
     return $ip;
+}
+
+function islog($var, $pdo)
+{
+  if(!empty($var['user']['id']))
+  {
+    $sql = "SELECT * FROM users WHERE id= :id";
+    $query=$pdo->prepare($sql);
+    $query->bindValue(':id', $var['user']['id'], PDO::PARAM_INT);
+    $query->execute();
+    $user=$query->fetch();
+
+    if($var['user']['user_ip'] == getUserIP() && !empty($user))
+    {
+      return true;
+    }
+  }
+  else
+  {
+  return false;
+  }
+}
+
+function add_to_see($pdo, $user, $movie, $movies_users)
+{
+  echo 'ajouté';
+  if(!empty($movies_users))
+  {
+    $sql = "UPDATE movies_users SET status=1 WHERE user_id= :user AND movie_id= :movie_id";
+    $query=$pdo->prepare($sql);
+    $query->bindValue(':user', $user['user']['id'], PDO::PARAM_INT);
+    $query->bindValue(':movie_id', $movie['id'], PDO::PARAM_INT);
+    $query->execute();
+  }
+  else
+  {
+    $sql = "INSERT INTO movies_users(user_id, movie_id, status) VALUES (:user,:movie_id, 1)";
+    $query=$pdo->prepare($sql);
+    $query->bindValue(':user', $user['user']['id'], PDO::PARAM_INT);
+    $query->bindValue(':movie_id', $movie['id'], PDO::PARAM_INT);
+    $query->execute();
+  }
+}
+
+function dell_to_see($pdo, $user, $movie)
+{
+  echo 'supprimer';
+  $sql = "UPDATE movies_users SET status=0 WHERE user_id= :user AND movie_id= :movie_id";
+  $query=$pdo->prepare($sql);
+  $query->bindValue(':user', $user['user']['id'], PDO::PARAM_INT);
+  $query->bindValue(':movie_id', $movie['id'], PDO::PARAM_INT);
+  $query->execute();
 }

@@ -50,7 +50,9 @@ if(!empty($_POST['send']))
     $user_ip = getUserIP();
     $_SESSION['user'] = array(
       'login' => $login,
-      'user_ip' => $user_ip
+      'user_ip' => $user_ip,
+      'id' => $user['id'],
+      'email' => $user['email']
     );
     header('location: index.php');
   }
