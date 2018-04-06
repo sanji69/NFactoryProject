@@ -3,12 +3,17 @@ session_start();
 include('inc/pdo.php');
 include('inc/function.php');
 
+
+$sql = "SELECT * FROM movies_full WHERE 1 LIMIT 16";
+$query=$pdo->prepare($sql);
+$query->execute();
+$movies=$query->fetchALL();
 ?>
 
 <?php
 include('inc/header.php');
 ?>
-<div class="container-fluid">
+<!-- <div class="container-fluid">
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -22,40 +27,14 @@ include('inc/header.php');
     </div>
   </div>
 </div>
-</div>
+</div> -->
 <div class="container-fluid">
  <div class="container-fluide">
 </div>
-   <!-- Content here -->
-  <img src="posters/4238.jpg">
-  <img src="posters/4239.jpg">
-  <img src="posters/4240.jpg">
-  <img src="posters/4350.jpg">
-  <img src="posters/4452.jpg">
-  <img src="posters/4243.jpg">
-  <img src="posters/4244.jpg">
-  <img src="posters/4245.jpg">
-  <img src="posters/13270.jpg">
-  <img src="posters/4247.jpg">
-  <img src="posters/4248.jpg">
-  <img src="posters/4249.jpg">
-  <img src="posters/4250.jpg">
-  <img src="posters/4251.jpg">
-  <img src="posters/4252.jpg">
-  <img src="posters/4254.jpg">
-  <img src="posters/4255.jpg">
-  <img src="posters/4256.jpg">
-  <img src="posters/4257.jpg">
-  <img src="posters/4258.jpg">
-  <img src="posters/13286.jpg">
-  <img src="posters/4260.jpg">
-  <img src="posters/4261.jpg">
-  <img src="posters/4262.jpg">
-  <img src="posters/4263.jpg">
-  <img src="posters/4264.jpg">
-  <img src="posters/13274.jpg">
-  <img src="posters/4267.jpg">
-  <img src="posters/4268.jpg">
+  <?php foreach ($movies as $movie)
+  {
+    echo '<a href="detail.php?slug=' .$movie['slug']. '"><img src="posters/' .$movie['id']. '.jpg" alt="' .$movie['title']. '"/></a>';
+  } ?>
 </div>
   <div class="container">
 
@@ -70,4 +49,3 @@ include('inc/header.php');
 
   <?php
   include('inc/footer.php');
-  
